@@ -4354,6 +4354,9 @@ input:focus, textarea:focus {
 	.get-voucher-now-title {
 		font-size: 25px;
 	}
+	.modal-content {
+		margin: 78% auto !important;
+	}
 }
 
 .img-wrap {

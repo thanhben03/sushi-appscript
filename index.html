@@ -38,6 +38,9 @@
 </head>
 
 <body id="home">
+    <audio id="backgroundMusic" loop>
+        <source src="music/background.mp3" type="audio/mpeg">
+    </audio>
     <div class="body">
         <!-- HEADER -->
         <header>
@@ -539,6 +542,22 @@
 
             return result;
         }
+
+        document.addEventListener('DOMContentLoaded', function () {
+            var audio = document.getElementById('backgroundMusic');
+            var hasPlayed = false; // Biến để đảm bảo nhạc chỉ phát một lần
+
+            window.addEventListener('scroll', function () {
+                if (!hasPlayed && window.scrollY > 0) { // Kiểm tra nếu chưa phát và đã scroll
+                    audio.play().then(function () {
+                        console.log("Nhạc đang phát!");
+                        hasPlayed = true; // Đánh dấu đã phát
+                    }).catch(function (error) {
+                        console.log("Lỗi khi phát nhạc: ", error);
+                    });
+                }
+            });
+        });
 
     </script>
 </body>

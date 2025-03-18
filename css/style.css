@@ -385,12 +385,12 @@ ul, ol, li {
 	margin-top: 105px;
 }
 
-@media (max-width: 768px) {
+/* @media (max-width: 768px) {
     .intro3 {
 		margin-top: 80px;
         padding: 212px 0 5px;
     }
-}
+} */
 
 .intro3 h3 {
 	color: #43121d;
@@ -4544,8 +4544,11 @@ button:hover {
 	animation: beatingHeart 1.2s infinite;
   }
   @media (max-width: 768px) {
+	/* .navbar-brand > img {
+		width: unset;
+	} */
     img {
-        width: 100%; /* Giữ nguyên chiều rộng trên mobile */
+        /* width: 100%; Giữ nguyên chiều rộng trên mobile */
         height: auto; /* Đảm bảo chiều cao tự điều chỉnh */
     }
 	.get-voucher-now-title {
@@ -4581,5 +4584,32 @@ button:hover {
 		position: absolute !important;
 		bottom: 51%;
 		right: -14%;
+	}
+
+	.modal-footer > button {
+		font-size: 13px;
+	}
+
+	.modal-footer {
+		display: flex;
+	}
+}
+
+@media (max-width: 500px) {
+	.intro3 {
+		margin-top: 80px;
+        padding: 212px 0 5px;
+	}
+}
+
+@media (max-width: 768px) {
+	.intro3 {
+		margin-top: 80px;
+        padding: 350px 0 5px;
+	}
+
+	#btn-custom {
+		left: 25px !important;
+		bottom: 11px;
 	}
 }

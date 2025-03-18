@@ -94,20 +94,21 @@
         <!-- Home -->
         <div class="intro intro3">
             <div class="container">
-                <div class="row center-content">
+                <!-- <div class="row center-content">
                     <div class="col-md-5 col-sm-6">
-                        <!-- <h3>Good food choices are good investments.</h3>
+                        <h3>Good food choices are good investments.</h3>
                         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam et purus a odio finibus bibendum amet leo. </p>
                         <div class="space30"></div>
                         <div class="dual-btn">
                             <a href="#explore" class="btn btn-lg btn-primary page-scroll">Order Now <span class="fa fa-shopping-basket"></span></a> &nbsp; &nbsp;
                             <a href="#about" class="btn btn-lg btn-default btn-border page-scroll">Learn More <i class=" ilmosys-arrow-right"></i></a>
-                        </div> -->
+                        </div>
 
                     </div>
                     <div class="col-md-7 col-sm-6 no-padding">
                     </div>
-                </div>
+                </div> -->
+                <!-- <img src="images/bg/3.jpg" alt=""> -->
             </div>
             <!-- <div data-toggle="modal" data-target="#bookingModal" class="button-53 get-voucher-btn">Nhận ưu
                 đãi
@@ -510,14 +511,14 @@
                 return;
             }
 
+            document.getElementById('voucherArea').style.display = 'none';
 
+            // if (window.localStorage.getItem('voucher')) {
+            //     document.getElementById('voucherCode').value = window.localStorage.getItem('voucher');
+            //     document.getElementById('voucherArea').style.display = 'block';
+            //     return;
 
-            if (window.localStorage.getItem('voucher')) {
-                document.getElementById('voucherCode').value = window.localStorage.getItem('voucher');
-                document.getElementById('voucherArea').style.display = 'block';
-                return;
-
-            }
+            // }
             // Hiển thị hiệu ứng loading và vô hiệu hóa nút gửi
             const submitBtn = document.getElementById('submitBtn');
             const loadingDiv = document.getElementById('loading');
@@ -543,7 +544,7 @@
                         // modal.style.display = 'block';
                         window.localStorage.setItem('voucher', voucher);
                         document.getElementById('voucherArea').style.display = 'block';
-                        document.getElementById('voucherCode').value = voucher;
+                        document.getElementById('voucherCode').value = data.voucher;
                         console.log('Voucher: ', voucher);
 
                         document.getElementById('formVoucher').reset();
@@ -561,7 +562,7 @@
                         };
 
                     } else {
-                        alert('Có lỗi xảy ra: ' + data.error);
+                        alert('Thông báo: ' + data.msg);
                     }
                 })
                 .catch(error => {

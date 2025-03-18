@@ -545,10 +545,10 @@
 
         document.addEventListener('DOMContentLoaded', function () {
             var audio = document.getElementById('backgroundMusic');
-            var hasPlayed = false; // Biến để đảm bảo nhạc chỉ phát một lần
+            var hasPlayed = false; // Đảm bảo nhạc chỉ phát một lần
 
-            window.addEventListener('scroll', function () {
-                if (!hasPlayed && window.scrollY > 0) { // Kiểm tra nếu chưa phát và đã scroll
+            document.addEventListener('click', function () {
+                if (!hasPlayed) { // Chỉ phát nếu chưa phát trước đó
                     audio.play().then(function () {
                         console.log("Nhạc đang phát!");
                         hasPlayed = true; // Đánh dấu đã phát

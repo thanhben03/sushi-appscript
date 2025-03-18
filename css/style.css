@@ -4443,10 +4443,10 @@ button:hover {
 }
 
 .hot-icon {
-	width: 53px;
+	width: 73px;
     position: absolute !important;
-    bottom: 19px;
-    right: -13px;
+    bottom: 64%;
+    right: -16%;
 }
 
 #backgroundMusic {
@@ -4507,11 +4507,11 @@ button:hover {
   }
   
   .filled {
-    position: absolute;
-    opacity: 0;
-    top: -4px;
-    left: 8px;
-}
+	position: absolute;
+	opacity: 0;
+	top: 20px;
+	left: 22px;
+  }
   
   @keyframes beatingHeart {
 	0% {
@@ -4568,5 +4568,18 @@ button:hover {
 	#btn-custom > svg {
 		width: 14px;
 		margin-right: 1px;
+	}
+
+	.filled {
+		position: absolute;
+		opacity: 0;
+		top: -4px;
+		left: 8px;
+	}
+	.hot-icon {
+		width: 23px;
+		position: absolute !important;
+		bottom: 51%;
+		right: -14%;
 	}
 }

@@ -4582,4 +4582,12 @@ button:hover {
 		bottom: 51%;
 		right: -14%;
 	}
+
+	.modal-footer > button {
+		font-size: 13px;
+	}
+
+	.modal-footer {
+		display: flex;
+	}
 }

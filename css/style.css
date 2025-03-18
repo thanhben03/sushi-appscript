@@ -4597,8 +4597,8 @@ button:hover {
 
 @media (max-width: 500px) {
 	.intro3 {
-		margin-top: 80px;
-        padding: 212px 0 5px;
+		margin-top: 80px !important;
+        padding: 212px 0 5px !important;
 	}
 }
 

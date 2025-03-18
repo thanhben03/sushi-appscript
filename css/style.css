@@ -4613,3 +4613,11 @@ button:hover {
 		bottom: 11px;
 	}
 }
+
+#get-success {
+	color: #ffffffd4;
+    text-align: justify;
+    background: #ff8103;
+    padding: 6px 14px;
+    border-radius: 4px;
+}

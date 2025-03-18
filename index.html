@@ -128,7 +128,7 @@
                     </path>
                 </svg>
                 Nhận Ưu Đãi
-            <img class="hot-icon" src="images/hot.gif" alt="">
+                <img class="hot-icon" src="images/hot.gif" alt="">
 
             </button>
 
@@ -143,6 +143,9 @@
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                         <h4 class="modal-title" id="bookingModalLabel">Nhận ưu đãi</h4>
+                        <p style="display: none;" id="get-success">
+
+                        </p>
                     </div>
 
                     <!-- Body với form -->
@@ -512,6 +515,7 @@
             }
 
             document.getElementById('voucherArea').style.display = 'none';
+            $('#get-success').hide();
 
             // if (window.localStorage.getItem('voucher')) {
             //     document.getElementById('voucherCode').value = window.localStorage.getItem('voucher');
@@ -542,10 +546,29 @@
                         // $('#bookingModal').modal('hide');
                         // const modal = document.getElementById('voucherModal');
                         // modal.style.display = 'block';
-                        window.localStorage.setItem('voucher', voucher);
-                        document.getElementById('voucherArea').style.display = 'block';
-                        document.getElementById('voucherCode').value = data.voucher;
-                        console.log('Voucher: ', voucher);
+                        // window.localStorage.setItem('voucher', voucher);
+
+                        if (data.voucher == '') {
+                            document.getElementById('voucherCode').value = voucher;
+                            $("#get-success").text(`
+                            Bạn đã đặt bàn thành công, nhân viên sẽ sớm liên hệ với bạn !
+
+                        `)
+                            $('#get-success').show();
+
+                        } else {
+                            // document.getElementById('voucherArea').style.display = 'block';
+                            // document.getElementById('voucherCode').value = data.voucher;
+                            $("#get-success").text(`
+                            Chúc mừng ${formData.get('name')} đã nhận Voucher ${data.voucher} thành công. Hãy đưa mã này cho nhân viên khi đến nhà hàng nha ^_^
+
+                        `);
+
+                            $('#get-success').show();
+
+                        }
+
+
 
                         document.getElementById('formVoucher').reset();
 
@@ -562,7 +585,14 @@
                         };
 
                     } else {
-                        alert('Thông báo: ' + data.msg);
+
+                        $("#get-success").text(`
+                            Chúc mừng ${data.row[0]} đã nhận Voucher ${data.row[2]} thành công. Hãy đưa mã này cho nhân viên khi đến nhà hàng nha ^_^
+
+                        `);
+
+                        $('#get-success').show();
+
                     }
                 })
                 .catch(error => {

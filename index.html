@@ -105,6 +105,62 @@
                     </div>
                 </div>
             </div>
+            <div data-toggle="modal" data-target="#bookingModal" class="btn btn-danger get-voucher-btn">Nhận ưu
+                đãi
+                <img class="hot-icon" src="images/hot.gif" alt="">
+            </div>
+        </div>
+
+        <!-- Modal -->
+        <div class="modal fade" id="bookingModal" style="z-index: 9999999;" tabindex="-1" role="dialog"
+            aria-labelledby="bookingModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <!-- Header -->
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                        <h4 class="modal-title" id="bookingModalLabel">Nhận ưu đãi</h4>
+                    </div>
+
+                    <!-- Body với form -->
+                    <div class="modal-body">
+                        <form id="formVoucher">
+                            <div class="form-group">
+                                <label for="fullName">Họ và tên</label>
+                                <input type="text" name="name" class="form-control" id="fullName"
+                                    placeholder="Nhập họ tên" required>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="phoneNumber">Số điện thoại</label>
+                                <input type="tel" name="phone" class="form-control" id="phoneNumber"
+                                    placeholder="Nhập số điện thoại" required>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="tableRequest">Yêu cầu đặt bàn</label>
+                                <select name="isTable" class="form-control" name="" id="">
+                                    <option selected value="0">Không</option>
+                                    <option value="1">Có</option>
+                                </select>
+                            </div>
+                            <!-- Khu vực hiển thị voucher -->
+                            <div id="voucherArea" class="form-group" style="display: none;">
+                                <label>Mã Voucher của bạn (Click để copy):</label>
+                                <input type="text" class="form-control" id="voucherCode" readonly
+                                    onclick="copyVoucher(this)">
+                            </div>
+                        </form>
+                    </div>
+
+                    <!-- Footer -->
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Đóng</button>
+                        <button id="submitBtn" type="button" onclick="handleSubmit()" class="btn btn-primary">Gửi thông tin</button>
+                        <div id="loading" style="display: none;">Đang xử lý...</div>
+                    </div>
+                </div>
+            </div>
         </div>
 
         <!-- Stats -->
@@ -299,7 +355,7 @@
         </div>
 
         <!-- PARALLAX -->
-        <section class="parallax-content2 parallax2 text-center" data-stellar-background-ratio="0.4">
+        <section style="display: none;" class="parallax-content2 parallax2 text-center" data-stellar-background-ratio="0.4">
             <div class="overlay"></div>
             <div class="container">
                 <div class="row">
@@ -317,7 +373,7 @@
 
 
         <!-- PARALLAX -->
-        <section class="text-center">
+        <!-- <section class="text-center">
             <div class="cta-wrap subscribe-elt2 ">
                 <div class="container">
                     <div class="col-md-12">
@@ -348,18 +404,8 @@
                     </div>
                 </div>
             </div>
-        </section>
+        </section> -->
         <div class="space80"></div>
-        <!-- Modal hiển thị mã voucher -->
-        <div id="voucherModal" class="modal">
-            <div class="modal-content">
-                <span class="close">&times;</span>
-                <h3>Chúc mừng bạn!</h3>
-                <p>Hệ thống đã ghi nhận thông tin ! Đây là mã voucher của bạn:</p>
-                <p><strong id="voucherCode"></strong></p>
-                <button onclick="copyVoucher()">Copy mã</button>
-            </div>
-        </div>
         <!-- FOOTER -->
         <footer class="footer2" id="footer2">
             <div class="container">
@@ -371,12 +417,12 @@
                         <a href="#">FAQ</a>
                     </div> -->
                     <div class="footer-social space30 text-center">
-                        <a href="#" class="fa fa-facebook"></a>
-                        <a href="#" class="fa fa-twitter"></a>
+                        <a href="https://www.facebook.com/Shibasushi.281PXL" class="fa fa-facebook"></a>
+                        <!-- <a href="#" class="fa fa-twitter"></a>
                         <a href="#" class="fa fa-youtube"></a>
                         <a href="#" class="fa fa-dribbble"></a>
                         <a href="#" class="fa fa-linkedin"></a>
-                        <a href="#" class="fa fa-instagram"></a>
+                        <a href="#" class="fa fa-instagram"></a> -->
                     </div>
                 </div>
             </div>
@@ -405,26 +451,25 @@
     <script src="js/vendors/mc/main.js"></script>
     <script>
 
-        function copyVoucher() {
-            const voucherCode = document.getElementById('voucherCode').innerText;
-            navigator.clipboard.writeText(voucherCode).then(() => {
-                alert('Đã copy mã voucher: ' + voucherCode);
-            }).catch(err => {
-
-            });
+        // Hàm copy khi click vào input
+        function copyVoucher(element) {
+            element.select(); // Chọn toàn bộ text trong input
+            document.execCommand('copy'); // Copy vào clipboard
+            alert('Đã copy voucher: ' + element.value); // Thông báo
         }
 
         function handleSubmit(event) {
-            var formData = new FormData(document.getElementById('invite'));
+            var formData = new FormData(document.getElementById('formVoucher'));
             if (!formData.get('name') || !formData.get('phone')) {
                 alert('Vui lòng nhập đầy đủ thông tin');
                 return;
             }
 
+
+
             if (window.localStorage.getItem('voucher')) {
-                const modal = document.getElementById('voucherModal');
-                modal.style.display = 'block';
-                document.getElementById('voucherCode').innerText = window.localStorage.getItem('voucher');
+                document.getElementById('voucherCode').value = window.localStorage.getItem('voucher');
+                document.getElementById('voucherArea').style.display = 'block';
                 return;
 
             }
@@ -448,8 +493,9 @@
                     submitBtn.disabled = false;
                     loadingDiv.style.display = 'none';
                     if (data.result === 'success') {
-                        const modal = document.getElementById('voucherModal');
-                        modal.style.display = 'block';
+                        $('#bookingModal').modal('hide');
+                        // const modal = document.getElementById('voucherModal');
+                        // modal.style.display = 'block';
                         window.localStorage.setItem('voucher', voucher);
                         document.getElementById('voucherCode').innerText = voucher;
 

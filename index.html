@@ -130,6 +130,13 @@
                     <div class="modal-body">
                         <form id="formVoucher">
                             <div class="form-group">
+                                <label for="">Chọn chi nhánh</label>
+                                <select name="branch" id="" class="form-control">
+                                    <option value="1">Hà Nội</option>
+                                    <option value="2">Hồ Chí Minh</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
                                 <label for="fullName">Họ và tên</label>
                                 <input type="text" name="name" class="form-control" id="fullName"
                                     placeholder="Nhập họ tên" required>
@@ -148,13 +155,14 @@
                                     <option value="1">Có</option>
                                 </select>
                             </div>
-                            <!-- Khu vực hiển thị voucher -->
-                            <div id="voucherArea" class="form-group" style="display: none;">
-                                <label>Mã Voucher của bạn (Click để copy):</label>
-                                <input type="text" class="form-control" id="voucherCode" readonly
-                                    onclick="copyVoucher(this)">
-                            </div>
+
                         </form>
+                        <!-- Khu vực hiển thị voucher -->
+                        <div id="voucherArea" class="form-group" style="display: none;">
+                            <label>Mã Voucher của bạn (Click để copy):</label>
+                            <input type="text" class="form-control" id="voucherCode" readonly
+                                onclick="copyVoucher(this)">
+                        </div>
                     </div>
 
                     <!-- Footer -->
@@ -437,7 +445,15 @@
         <!-- Copyright -->
         <div class="footer-copy">
             <div class="container">
-                <!-- &copy; 2019. Foodera. All rights reserved. -->
+                SHIBA SUSHI CHI NHÁNH HCM:
+                CN: 281 Phan Xích Long, P2, Q.Phú Nhuận, TP. Hồ Chí Minh
+                ​Hotline: 0356 593 005 (HCM)
+                <br>
+                -----------------------------------------
+                <br>
+                SHIBA SUSHI CHI NHÁNH HÀ NỘI:
+                CN: 12, Ngõ 9 Đào Tấn, Ba Đình, Hà Nội
+                Hotline: 0394 244 245 (Hà Nội)
             </div>
         </div>
     </div>
@@ -501,12 +517,13 @@
                     submitBtn.disabled = false;
                     loadingDiv.style.display = 'none';
                     if (data.result === 'success') {
-                        $('#bookingModal').modal('hide');
+                        // $('#bookingModal').modal('hide');
                         // const modal = document.getElementById('voucherModal');
                         // modal.style.display = 'block';
                         window.localStorage.setItem('voucher', voucher);
-                        document.getElementById('voucherCode').innerText = voucher;
-
+                        document.getElementById('voucherArea').style.display = 'block';
+                        document.getElementById('voucherCode').value = voucher;
+                        console.log('Voucher: ', voucher);
 
                         document.getElementById('formVoucher').reset();
 

@@ -76,6 +76,15 @@ a, a:hover, a:focus, button, button:hover {
 	transition: .4s;
 }
 
+#get-voucher-btn {
+	position: fixed;
+	right: -21px;
+	width: 334px;
+	bottom: 0px;
+	z-index: 9999999;
+	cursor: pointer;
+}
+
 ul, ol, li {
 	margin: 0;
 	padding: 0;
@@ -4556,7 +4565,7 @@ button:hover {
 	.modal-content {
 		/* margin: 78% auto !important; */
 	}
-	#btn-custom {
+	/* #btn-custom {
 		padding: 0;
         font-size: 9px;
         border-width: 3px;
@@ -4565,6 +4574,14 @@ button:hover {
         left: 8px;
         bottom: 7px;
         height: 28px;
+	} */
+
+	#get-voucher-btn {
+		position: fixed;
+		right: -21px;
+		width: 334px;
+		bottom: 0px;
+		z-index: 9999999;
 	}
 
 	#btn-custom > svg {
@@ -4607,10 +4624,10 @@ button:hover {
         padding: 350px 0 5px;
 	}
 
-	#btn-custom {
+	/* #btn-custom {
 		left: 25px !important;
 		bottom: 11px;
-	}
+	} */
 }
 
 #get-success {
@@ -4624,3 +4641,4 @@ button:hover {
 .text-in-banner {
 	
 }
+
